@@ -1,0 +1,25 @@
+if on ubuntu docker is not working in gives error as : 
+
+root@ubuntudocker:/home# docker ps
+Cannot connect to the Docker daemon at unix:///root/.docker/desktop/docker.sock. Is the docker daemon running?
+
+set the context for same.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+root@ubuntudocker:/home# docker context ls 
+NAME                TYPE                DESCRIPTION                               DOCKER ENDPOINT                            KUBERNETES ENDPOINT   ORCHESTRATOR
+default             moby                Current DOCKER_HOST based configuration   unix:///var/run/docker.sock                                      
+desktop-linux *     moby                Docker Desktop                            unix:///root/.docker/desktop/docker.sock  
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+root@ubuntudocker:/home# docker context use default 
+default
+Current context is now "default"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+root@ubuntudocker:/home# docker context ls 
+NAME                TYPE                DESCRIPTION                               DOCKER ENDPOINT                            KUBERNETES ENDPOINT   ORCHESTRATOR
+default *           moby                Current DOCKER_HOST based configuration   unix:///var/run/docker.sock                                      
+desktop-linux       moby                Docker Desktop                            unix:///root/.docker/desktop/docker.sock    
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+root@ubuntudocker:/home# docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+root@ubuntudocker:/home# 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
